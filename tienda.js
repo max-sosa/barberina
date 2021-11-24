@@ -22,6 +22,9 @@ const scons = new product("Scons", "Panificado",400);
 const medialunas = new product("Medialunas", "Panificado",450);
 const panChocolate = new product("Pan de Chocolate", "Panificado",500);
 
+//Creando lista de panificados.
+const panificados = [ciabatta, figaza, negritos, burger, brioche, integral, scons, medialunas, panChocolate];
+
 //Creación de objetos > Tortas
 const appleCrumble = new product("Apple Crumble", "Tortas",1000);
 const cheesecake = new product("Cheesecake", "Tortas",1500);
@@ -29,6 +32,9 @@ const tortaMarisa = new product("Torta Marisa", "Tortas",2000);
 const lemonPie = new product("Lemon Pie", "Tortas",2500);
 const carrotCake = new product("Carrot Cake", "Tortas",3000);
 const dobleChocolate = new product("Doble Chocolate", "Tortas",3500);
+
+//Creando lista de tortas.
+const tortas = [appleCrumble, cheesecake, tortaMarisa, lemonPie, carrotCake, dobleChocolate];
 
 function eleccion(){
     let productos = prompt("Ingrese un número para la elección: 1-TORTAS | 2-PANIFICADOS");
@@ -128,3 +134,4 @@ function eleccion(){
 }
 
 eleccion();
+console.log(panificados);
