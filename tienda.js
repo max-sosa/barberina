@@ -134,4 +134,13 @@ function eleccion(){
 }
 
 eleccion();
-console.log(panificados);
+
+console.log(panificados[1].price + panificados[2].price);
+
+//ordenando un array de numeros de menor a mayor.
+var numeros = [24,18,1,5,8,10];
+numeros.sort(function(a, b) {
+    return a - b;
+});
+
+console.log(numeros);
