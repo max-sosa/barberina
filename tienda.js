@@ -36,111 +36,16 @@ const dobleChocolate = new product("Doble Chocolate", "Tortas",3500);
 //Creando lista de tortas.
 const tortas = [appleCrumble, cheesecake, tortaMarisa, lemonPie, carrotCake, dobleChocolate];
 
-function eleccion(){
-    let productos = prompt("Ingrese un número para la elección: 1-TORTAS | 2-PANIFICADOS");
+let parrafo = document.getElementById("parrafo");
+let botonComprar = document.getElementById("btnComprar");
+botonComprar.addEventListener("click",respuestaClick);
 
-    while ((productos != 1)&&(productos !=2)){
-        productos = prompt("Ingrese un valor correcto: 1-TORTAS | 2-PANIFICADOS");
-    }
-
-    if (productos == 1){
-        let entrada = prompt("Ingresar el nombre de la torta que te guste para saber su valor (APPLE CRUMBLE - CHEESECAKE - TORTA MARISA - LEMON PIE - CARROT CAKE - DOBLE CHOCOLATE) - Para salir ingrese ESC");
-        
-        while(entrada.toUpperCase() != "ESC" ){
-            switch (entrada.toUpperCase()) {
-                case "APPLE CRUMBLE":
-                    alert(appleCrumble.precio());
-                break;
-                
-                case "CHEESECAKE":
-                    alert(cheesecake.precio());
-                break;
-                
-                case "TORTA MARISA":
-                    alert(tortaMarisa.precio());
-                break;
-
-                case "LEMON PIE":
-                    alert(lemonPie.precio());
-                break;
-
-                case "CARROT CAKE":
-                    alert(carrotCake.precio());
-                break;
-
-                case "DOBLE CHOCOLATE":
-                    alert(dobleChocolate.precio());
-                break;
-            
-                default:
-                    alert("NOMBRE INCORRECTO");
-                break;
-            }
-            
-            entrada = prompt("Ingresar el nombre de la torta que te guste para saber su valor (APPLE CRUMBLE - CHEESECAKE - TORTA MARISA - LEMON PIE - CARROT CAKE - DOBLE CHOCOLATE) - Para salir ingrese ESC");
-         
-        }
-
-    }
-    else if (productos ==2){
-        let entrada = prompt("Ingresar el nombre del panificado que te guste para saber su valor (CIABATTA - FIGAZA - NEGRITOS INTEGRALES - PAN BURGER - BRIOCHE - PAN DE MOLDE INTEGRAL - SCONS - MEDIALUNAS - PAN DE CHOCOLATE) - Para salir ingrese ESC");
-        
-        while(entrada.toUpperCase() != "ESC" ){
-            switch (entrada.toUpperCase()) {
-                case "CIABATTA":
-                    alert(ciabatta.precio());
-                break;
-                
-                case "FIGAZA":
-                    alert(figaza.precio());
-                break;
-                
-                case "NEGRITOS INTEGRALES":
-                    alert(negritos.precio());
-                break;
-
-                case "PAN BURGER":
-                    alert(burger.precio());
-                break;
-
-                case "BRIOCHE":
-                    alert(brioche.precio());
-                break;
-
-                case "PAN DE MOLDE INTEGRAL":
-                    alert(integral.precio());
-                break;
-
-                case "SCONS":
-                    alert(scons.precio());
-                break;
-
-                case "MEDIALUNAS":
-                    alert(medialunas.precio());
-                break;
-
-                case "PAN DE CHOCOLATE":
-                    alert(panChocolate.precio());
-                break;
-
-                default:
-                    alert("NOMBRE INCORRECTO");
-                break;
-            }
-        
-            entrada = prompt("Ingresar el nombre del panificado que te guste para saber su valor (CIABATTA - FIGAZA - NEGRITOS INTEGRALES - PAN BURGER - BRIOCHE - PAN DE MOLDE INTEGRAL - SCONS - MEDIALUNAS - PAN DE CHOCOLATE) - Para salir ingrese ESC");
-        }
-    }
+function respuestaClick(){
+    localStorage.clear();
+    let cantidad = parseInt(prompt("Ingrese la cantidad que quiera comprar."));
+    let precioFinal = cantidad*50;
+    localStorage.setItem("Precio",precioFinal);
+    let valor = document.createElement("span");
+    valor.innerHTML = localStorage.getItem("Precio");
+    parrafo.appendChild(valor);
 }
-
-eleccion();
-
-console.log(panificados[1].price + panificados[2].price);
-
-//ordenando un array de numeros de menor a mayor.
-var numeros = [24,18,1,5,8,10];
-numeros.sort(function(a, b) {
-    return a - b;
-});
-
-console.log(numeros);
