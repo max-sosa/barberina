@@ -45,7 +45,7 @@ function respuestaClick(){
     let cantidad = parseInt(prompt("Ingrese la cantidad que quiera comprar."));
     let precioFinal = cantidad*50;
     localStorage.setItem("Precio",precioFinal);
-    let valor = document.createElement("span");
+    let valor = document.getElementById("span");
     valor.innerHTML = localStorage.getItem("Precio");
     parrafo.appendChild(valor);
 }
