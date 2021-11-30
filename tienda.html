@@ -53,7 +53,55 @@
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>   
         <div class="offcanvas-body">
-        ...
+            <table class="table text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Brioche</td>
+                    <td>1</td>
+                    <td>$50</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Torta Marisa</td>
+                    <td>2</td>
+                    <td>$1300</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3
+                    </th>
+                    <td>Doble Chocolate</td>
+                    <td>2</td>
+                    <td>$1300</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Lemon Pie</td>
+                    <td>2</td>
+                    <td>$1300</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="table-dark">
+                        <th scope="row" colspan="2">TOTAL</th>
+                        <td>7</td>
+                        <td>$3950</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="d-flex justify-content-around">
+                <button type="button" class="btn btn-success fw-bold">FINALIZAR COMPRA</button>
+                <button type="button" class="btn btn-danger fw-bold">VACIAR CARRITO</button>
+            </div>
         </div>
     </div>
 </div>    
