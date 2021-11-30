@@ -35,8 +35,7 @@
                     </li>
                     <li class="nav-item px-md-3"><a class="nav-link" href="tienda.html">Tienda</a></li>
                     <li class="nav-item px-md-3"><a class="nav-link" href="envios.html">Envios</a></li>
-                    <li class="nav-item px-md-3"><a class="nav-link" href="contacto.html">Contacto<a></li>
-                    <li class="nav-item px-md-3"><a class="nav-link" href="carrito.html"><i class='bx bx-shopping-bag' ></i><a></li>    
+                    <li class="nav-item px-md-3"><a class="nav-link" href="contacto.html">Contacto<a></li> 
                 </ul>
             </div>
         </div>
@@ -45,141 +44,163 @@
     
 <div class="separador"></div>
 
-<main class="tienda pt-5 d-flex flex-column align-items-center">
+<div class="tienda px-4 pt-3 d-flex justify-content-end">
+    <button class="btn btn-lg btn-outline-secondary position-relative" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark bg-opacity-75">0<span class="visually-hidden">unread messages</span></span><i class='bx bx-cart fs-3 p-1'></i></button>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel"><strong>CARRITO DE COMPRAS</strong></h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>   
+        <div class="offcanvas-body">
+        ...
+        </div>
+    </div>
+</div>    
+
+<main class="tienda d-flex flex-column align-items-center">
   <div class="subtienda text-center">  
     <h3><a href="panificados.html">Panificados</a></h3>
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width: 56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/panificados/brioche.jpg" class="img-fluid rounded-start" alt="brioche">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Brioche</h5>
-                    <p class="card-text">Valor unitario = $50</p>
-                    <p id="parrafo" class="card-text">Precio total =$ <span id="span"></span>
+                    <h5 class="card-title font-monospace">Brioche</h5>
+                    <p id="parrafo" class="card-text font-monospace">$<span id="span"></span>
                     </p>
-                    <button id="btnComprar" type="button" class="btn btn-info">Comprar</button>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button id="btnComprar" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width:56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/panificados/ciabatta.jpg" class="img-fluid rounded-start" alt="ciabatta">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Ciabatta</h5>
-                    <p class="card-text">Precio = $50</p>
-                    <button type="button" class="btn btn-info">Comprar</button>
+                    <h5 class="card-title font-monospace">Ciabatta</h5>
+                    <p class="card-text font-monospace">$200</p>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width:56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/panificados/figazita.jpg" class="img-fluid rounded-start" alt="figaza">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Figaza</h5>
-                    <p class="card-text">Precio = $50</p>
-                    <button type="button" class="btn btn-info">Comprar</button>
+                    <h5 class="card-title font-monospace">Figaza</h5>
+                    <p class="card-text font-monospace">$50</p>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width: 56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/panificados/medialunas.jpg" class="img-fluid rounded-start" alt="medialunas">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Medialunas</h5>
-                    <p class="card-text">Precio = $50</p>
-                    <button type="button" class="btn btn-info">Comprar</button>
+                    <h5 class="card-title font-monospace">Medialunas</h5>
+                    <p class="card-text font-monospace">$50</p>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width: 56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/panificados/negritos integrales.jpg" class="img-fluid rounded-start" alt="negritos">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Negritos Integrales</h5>
-                    <p class="card-text">Precio = $50</p>
-                    <button type="button" class="btn btn-info">Comprar</button>
+                    <h5 class="card-title font-monospace">Negritos Integrales</h5>
+                    <p class="card-text font-monospace">$100</p>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width: 56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/panificados/pan de chocolate.jpg" class="img-fluid rounded-start" alt="pan de chocolate">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Pan de Chocolate</h5>
-                    <p class="card-text">Precio = $50</p>
-                    <button type="button" class="btn btn-info">Comprar</button>
+                    <h5 class="card-title font-monospace">Pan de Chocolate</h5>
+                    <p class="card-text font-monospace">$50</p>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width: 56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/panificados/pan hamburguesas.jpg" class="img-fluid rounded-start" alt="pan de hamburguesas">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Pan de Hamburguesas</h5>
-                    <p class="card-text">Precio = $50</p>
-                    <button type="button" class="btn btn-info">Comprar</button>
+                    <h5 class="card-title font-monospace">Pan de Hamburguesas</h5>
+                    <p class="card-text font-monospace">$250</p>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width: 56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/panificados/pan integral.jpg" class="img-fluid rounded-start" alt="pan integral">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Pan Integral</h5>
-                    <p class="card-text">Precio = $50</p>
-                    <button type="button" class="btn btn-info">Comprar</button>
+                    <h5 class="card-title font-monospace">Pan Integral</h5>
+                    <p class="card-text font-monospace">$350</p>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width: 56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/panificados/scons.jpg" class="img-fluid rounded-start" alt="scons">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Scons</h5>
-                    <p class="card-text">Precio = $50</p>
-                    <button type="button" class="btn btn-info">Comprar</button>
+                    <h5 class="card-title font-monospace">Scons</h5>
+                    <p class="card-text font-monospace">$50</p>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -188,91 +209,97 @@
 
     <div class="subtienda text-center">
     <h3> <a href="tortas.html"> Tortas</a></h3>
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width: 56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/tortas/apple crumble.jpg" class="img-fluid rounded-start" alt="apple crumble">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Apple Crumble</h5>
-                    <p class="card-text">Precio = $50</p>
-                    <button type="button" class="btn btn-info">Comprar</button>
+                    <h5 class="card-title font-monospace">Apple Crumble</h5>
+                    <p class="card-text font-monospace">$450</p>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width: 56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/tortas/carrot cake.jpg" class="img-fluid rounded-start" alt="carrot cake">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Carrot Cake</h5>
-                    <p class="card-text">Precio = $50</p>
-                    <button type="button" class="btn btn-info">Comprar</button>
+                    <h5 class="card-title font-monospace">Carrot Cake</h5>
+                    <p class="card-text font-monospace">$350</p>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width: 56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/tortas/cheesecake.jpg" class="img-fluid rounded-start" alt="cheesecake">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Cheesecake</h5>
-                    <p class="card-text">Precio = $50</p>
-                    <button type="button" class="btn btn-info">Comprar</button>
+                    <h5 class="card-title font-monospace">Cheesecake</h5>
+                    <p class="card-text font-monospace">$550</p>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width: 56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/tortas/doble chocolate.jpg" class="img-fluid rounded-start" alt="doble chocolate">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Doble Chocolate</h5>
-                    <p class="card-text">Precio = $50</p>
-                    <button type="button" class="btn btn-info">Comprar</button>
+                    <h5 class="card-title font-monospace">Doble Chocolate</h5>
+                    <p class="card-text font-monospace">$450</p>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width: 56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/tortas/lemon pie.jpg" class="img-fluid rounded-start" alt="lemon pie">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Lemon Pie</h5>
-                    <p class="card-text">Precio = $50</p>
-                    <button type="button" class="btn btn-info">Comprar</button>
+                    <h5 class="card-title font-monospace">Lemon Pie</h5>
+                    <p class="card-text font-monospace">$550</p>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 720px;">
+    <div class="card mb-3" style="max-width: 56rem;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="images/productos/tortas/torta marisa.jpg" class="img-fluid rounded-start" alt="torta marisa">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
-                    <h5 class="card-title fs-3">Torta Marisa</h5>
-                    <p class="card-text">Precio = $50</p>
-                    <button type="button" class="btn btn-info">Comprar</button>
+                    <h5 class="card-title font-monospace">Torta Marisa</h5>
+                    <p class="card-text font-monospace">$650</p>
+                    <p class="card-text font-monospace">(Precio por unidad)</p>
+                    <button type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
