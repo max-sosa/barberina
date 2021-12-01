@@ -62,45 +62,19 @@
                     <th scope="col">Total</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brioche</td>
-                    <td>1</td>
-                    <td>$50</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Torta Marisa</td>
-                    <td>2</td>
-                    <td>$1300</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3
-                    </th>
-                    <td>Doble Chocolate</td>
-                    <td>2</td>
-                    <td>$1300</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Lemon Pie</td>
-                    <td>2</td>
-                    <td>$1300</td>
-                  </tr>
-                </tbody>
+                <tbody id="tableBody"></tbody>
                 <tfoot>
                     <tr class="table-dark">
                         <th scope="row" colspan="2">TOTAL</th>
-                        <td>7</td>
-                        <td>$3950</td>
+                        <td id="cantidadTotal"></td>
+                        <td id="montoTotal"></td>
                     </tr>
                 </tfoot>
             </table>
 
             <div class="d-flex justify-content-around">
-                <button type="button" class="btn btn-success fw-bold">FINALIZAR COMPRA</button>
-                <button type="button" class="btn btn-danger fw-bold">VACIAR CARRITO</button>
+                <button id="btnFinalizar" type="button" class="btn btn-success fw-bold">FINALIZAR COMPRA</button>
+                <button id="btnVaciar" type="button" class="btn btn-danger fw-bold">VACIAR CARRITO</button>
             </div>
         </div>
     </div>
@@ -117,10 +91,10 @@
             <div class="col-md-8 my-auto">
                 <div class="card-body text-center">
                     <h5 class="card-title font-monospace">Brioche</h5>
-                    <p id="parrafo" class="card-text font-monospace">$<span id="span"></span>
+                    <p class="card-text font-monospace">$300
                     </p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button id="btnComprar" type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="5" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -136,7 +110,7 @@
                     <h5 class="card-title font-monospace">Ciabatta</h5>
                     <p class="card-text font-monospace">$200</p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="1" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -152,7 +126,7 @@
                     <h5 class="card-title font-monospace">Figaza</h5>
                     <p class="card-text font-monospace">$50</p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="2" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -168,7 +142,7 @@
                     <h5 class="card-title font-monospace">Medialunas</h5>
                     <p class="card-text font-monospace">$50</p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="8" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -184,7 +158,7 @@
                     <h5 class="card-title font-monospace">Negritos Integrales</h5>
                     <p class="card-text font-monospace">$100</p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="6" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -200,7 +174,7 @@
                     <h5 class="card-title font-monospace">Pan de Chocolate</h5>
                     <p class="card-text font-monospace">$50</p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="9" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -216,7 +190,7 @@
                     <h5 class="card-title font-monospace">Pan de Hamburguesas</h5>
                     <p class="card-text font-monospace">$250</p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="4" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -232,7 +206,7 @@
                     <h5 class="card-title font-monospace">Pan Integral</h5>
                     <p class="card-text font-monospace">$350</p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="6" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -248,7 +222,7 @@
                     <h5 class="card-title font-monospace">Scons</h5>
                     <p class="card-text font-monospace">$50</p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="7" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -267,7 +241,7 @@
                     <h5 class="card-title font-monospace">Apple Crumble</h5>
                     <p class="card-text font-monospace">$450</p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="10" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -283,7 +257,7 @@
                     <h5 class="card-title font-monospace">Carrot Cake</h5>
                     <p class="card-text font-monospace">$350</p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="14" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -299,7 +273,7 @@
                     <h5 class="card-title font-monospace">Cheesecake</h5>
                     <p class="card-text font-monospace">$550</p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="11" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -315,7 +289,7 @@
                     <h5 class="card-title font-monospace">Doble Chocolate</h5>
                     <p class="card-text font-monospace">$450</p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="15" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -331,7 +305,7 @@
                     <h5 class="card-title font-monospace">Lemon Pie</h5>
                     <p class="card-text font-monospace">$550</p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="13" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -347,7 +321,7 @@
                     <h5 class="card-title font-monospace">Torta Marisa</h5>
                     <p class="card-text font-monospace">$650</p>
                     <p class="card-text font-monospace">(Precio por unidad)</p>
-                    <button type="button" class="btn btn-outline-dark">Comprar</button>
+                    <button id="12" type="button" class="btn btn-outline-dark">Comprar</button>
                 </div>
             </div>
         </div>
@@ -364,7 +338,8 @@
     </div>    
 </footer>
 
-<script src="tienda.js"></script>
+<script src="scripts/tienda.js"></script>
+<script src="scripts/carrito.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>
