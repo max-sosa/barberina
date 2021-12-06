@@ -3,13 +3,14 @@ let carrito = [];
 let montoTotalCompra = document.getElementById("montoTotal");
 montoTotalCompra.innerText = "$ 0";
 
+
 let cantProductos = document.getElementById("cantidadTotal");
 cantProductos.innerText = "0";
 
 let botonFinalizar = document.getElementById("btnFinalizar");
 botonFinalizar.onclick = () => {
     const precioFinal = montoTotalCompra.innerText;
-    alert("EL MONTO TOTAL DE LA COMPRA ES " + precioFinal);
+    Swal.fire("EL MONTO TOTAL DE LA COMPRA ES " + precioFinal);
 }
 
 
@@ -26,6 +27,13 @@ function agregarAlCarro(miId) {
     carrito.push(productos[miId - 1]);
     localStorage.setItem("Carrito", JSON.stringify(carrito));
     calcularTotalCarrito();
+    Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Agregaste el producto al carrito',
+        showConfirmButton: false,
+        timer: 2000
+      })
 };
 
 function calcularTotalCarrito() {
@@ -35,4 +43,8 @@ function calcularTotalCarrito() {
     }
     montoTotalCompra.innerText = "$ "+ total;
     cantProductos.innerText = carrito.length;
+    let badgeCarrito = document.getElementById("badgeCarrito");
+    badgeCarrito.innerText = carrito.length;
 }
+
+
