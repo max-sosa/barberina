@@ -79,5 +79,3 @@ for(const torta of tortas){
             </div>
         </div>`);
 }
-
-
