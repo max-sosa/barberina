@@ -6,6 +6,7 @@ montoTotalCompra.innerText = "$ 0";
 let cantProductos = document.getElementById("cantidadTotal");
 cantProductos.innerText = "0";
 
+
 $("#btnFinalizar").on('click', function(){
     const precioFinal = montoTotalCompra.innerText;
     Swal.fire("EL MONTO TOTAL DE LA COMPRA ES " + precioFinal);
