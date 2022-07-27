@@ -3,6 +3,7 @@ let carrito = [];
 let montoTotalCompra = document.getElementById("montoTotal");
 montoTotalCompra.innerText = "$ 0";
 
+
 let cantProductos = document.getElementById("cantidadTotal");
 cantProductos.innerText = "0";
 
@@ -56,11 +57,52 @@ for(const prod of productos){
    document.getElementById(`${prod.id}`).onclick = () => agregarAlCarro(`${prod.id}`);
 }
 
-function agregarAlCarro(miId) {
-    $("#tableBody").append(
+class ProductoCarrito{
+    constructor (objProd){
+        this.id = objProd.id;
+        this.name = objProd.name;
+        this.price = objProd.price;
+        this.qty = 1;
+    }
+}
+
+
+function agregarAlCarro(productoNuevo) {
+    let encontrado = carrito.find(p=> p.id == productoNuevo.id);
+    console.log(encontrado);
+
+    if (encontrado == undefined) {
+        let prodACarrito = new ProductoCarrito(productoNuevo);
+        carrito.push(prodACarrito);
+        localStorage.setItem("Carrito", JSON.stringify(carrito));
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Agregaste el producto al carrito',
+            showConfirmButton: false,
+            timer: 2000
+        })
+        
+        $("#tableBody").append(
+        `<tr><td> ${prodACarrito.name}</td>
+            <td> ${prodACarrito.qty}</td>
+            <td> $ ${prodACarrito.price}</td></tr>`);
+
+    }else{
+        //Pido al carro la posicion del producto
+        let posicion = carrito.findIndex(p => p.id == productoNuevo.id);
+        console.log(posicion);
+        carrito[posicion].cantidad +=1;
+        $(`#${productoNuevo.id}`).html(carrito[posicion].qty);
+    }
+
+
+
+   /* $("#tableBody").append(
         `<tr><td> ${productos[miId - 1].name}</td>
         <td> ${1}</td>
         <td> $ ${productos[miId - 1].price}</td></tr>`);
+
     carrito.push(productos[miId - 1]);
     localStorage.setItem("Carrito", JSON.stringify(carrito));
     calcularTotalCarrito();
@@ -70,8 +112,8 @@ function agregarAlCarro(miId) {
         title: 'Agregaste el producto al carrito',
         showConfirmButton: false,
         timer: 2000
-      })
-};
+      })*/
+}
 
 
 function calcularTotalCarrito() {
