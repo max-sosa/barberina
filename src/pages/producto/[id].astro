@@ -1,0 +1,67 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { Image, getImage } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import GrillaProductos from '../../components/GrillaProductos.astro';
+import AgregarAlCarrito from '../../components/carrito/AgregarAlCarrito';
+import { categorias, obtenerProductos } from '../../lib/productos';
+import { formatearPrecio } from '../../lib/formato';
+import { enlaceWhatsApp } from '../../lib/whatsapp';
+
+export const getStaticPaths = (async () => {
+  const productos = await obtenerProductos();
+  return productos.map((producto) => ({ params: { id: producto.id }, props: { producto } }));
+}) satisfies GetStaticPaths;
+
+const { producto } = Astro.props;
+const { nombre, categoria, precio, unidad, descripcion, imagen, porciones } = producto.data;
+const miniatura = await getImage({ src: imagen, width: 160, height: 160, fit: 'cover' });
+const relacionados = (await obtenerProductos(categoria)).filter((p) => p.id !== producto.id).slice(0, 3);
+const esTorta = categoria === 'tortas';
+---
+
+<Base titulo={nombre} descripcion={descripcion} imagen={imagen}>
+  <div class="contenedor pt-8">
+    <nav aria-label="Ruta" class="text-sm text-chocolate-500">
+      <a href="/tienda" class="hover:text-chocolate">Tienda</a>
+      <span aria-hidden="true" class="mx-2">/</span>
+      <a href={`/${categoria}`} class="hover:text-chocolate">{categorias[categoria].titulo}</a>
+    </nav>
+
+    <article class="mt-6 grid items-center gap-10 md:grid-cols-2 lg:gap-16">
+      <Image
+        src={imagen}
+        alt={nombre}
+        widths={[480, 720, 1080]}
+        sizes="(min-width: 768px) 50vw, 100vw"
+        loading="eager"
+        class="aspect-[4/3] w-full rounded-[2rem] object-cover"
+      />
+      <div>
+        <p class="antetitulo">{categorias[categoria].titulo}</p>
+        <h1 class="mt-3 text-4xl md:text-5xl">{nombre}</h1>
+        <p class="mt-4 font-display text-3xl tabular-nums">
+          {formatearPrecio(precio)} <span class="font-sans text-base text-chocolate-500">{unidad}</span>
+        </p>
+        <p class="mt-6 text-lg leading-relaxed text-chocolate-700">{descripcion}</p>
+        {porciones && <p class="mt-4 text-sm"><span class="font-medium">Rinde:</span> {porciones}</p>}
+        <AgregarAlCarrito client:load conCantidad class="mt-8" id={producto.id} nombre={nombre} precio={precio} unidad={unidad} imagen={miniatura.src} />
+        {esTorta && (
+          <p class="mt-6 rounded-2xl bg-rosa-100 px-5 py-4 text-sm leading-relaxed">
+            ¿La querés personalizada para un evento?{' '}
+            <a href={enlaceWhatsApp(`¡Hola! Quiero consultar por una ${nombre} personalizada.`)} target="_blank" rel="noopener" class="font-medium underline underline-offset-4">
+              Consultanos por WhatsApp
+            </a>
+          </p>
+        )}
+      </div>
+    </article>
+  </div>
+
+  {relacionados.length > 0 && (
+    <section class="contenedor mt-28">
+      <h2 class="mb-10 text-3xl">También te puede gustar</h2>
+      <GrillaProductos productos={relacionados} />
+    </section>
+  )}
+</Base>

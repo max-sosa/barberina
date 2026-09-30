@@ -1,0 +1,120 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import GrillaProductos from '../components/GrillaProductos.astro';
+import { categorias, obtenerProductos } from '../lib/productos';
+import { enlaceWhatsApp } from '../lib/whatsapp';
+import { negocio } from '../config';
+import { formatearPrecio } from '../lib/formato';
+import heroTorta from '../assets/productos/tortas/apple-crumble.jpg';
+import fotoTortas from '../assets/productos/tortas/cheesecake.jpg';
+import fotoPanificados from '../assets/productos/panificados/ciabatta.jpg';
+import fotoMedialunas from '../assets/portada/medialunas.jpg';
+import fotoHistoria from '../assets/historia/antique.jpg';
+
+const destacados = (await obtenerProductos()).filter((p) => p.data.destacado);
+const bloquesCategorias = [
+  { href: '/tortas', imagen: fotoTortas, ...categorias.tortas },
+  { href: '/panificados', imagen: fotoPanificados, ...categorias.panificados },
+];
+---
+
+<Base>
+  <!-- Portada -->
+  <section class="contenedor grid items-center gap-12 pt-12 pb-20 md:grid-cols-[1.1fr_1fr] md:pt-20 lg:gap-20">
+    <div>
+      <p class="antetitulo">Pastelería y panadería · {negocio.localidad}</p>
+      <h1 class="mt-5 text-5xl leading-[1.05] md:text-7xl">
+        Un lugar de <em class="text-rosa-600">cosas ricas</em>
+      </h1>
+      <p class="mt-6 max-w-lg text-lg leading-relaxed text-chocolate-700">
+        Tortas y panes artesanales con recetas que vienen de familia desde 1923. Ingredientes nobles, horno de todos los días.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href="/tienda" class="boton-primario">Ver la tienda</a>
+        <a href={enlaceWhatsApp('¡Hola! Quiero encargar una torta.')} target="_blank" rel="noopener" class="boton-secundario">
+          Encargar una torta
+        </a>
+      </div>
+    </div>
+    <div class="relative">
+      <div class="absolute -inset-4 -z-10 rounded-t-full rounded-b-[3rem] bg-rosa-100 md:-inset-6"></div>
+      <Image
+        src={heroTorta}
+        alt="Apple crumble recién horneado decorado con rosas de manzana"
+        widths={[480, 720, 960]}
+        sizes="(min-width: 768px) 45vw, 100vw"
+        loading="eager"
+        fetchpriority="high"
+        class="aspect-[4/5] w-full rounded-t-full rounded-b-[2.5rem] object-cover"
+      />
+    </div>
+  </section>
+
+  <!-- Beneficios -->
+  <section class="border-y border-chocolate/10 bg-crema-100">
+    <ul class="contenedor grid gap-6 py-8 text-center text-sm sm:grid-cols-3">
+      <li><span class="block font-display text-lg">Recetas de familia</span><span class="text-chocolate-700">Desde 1923, del Piamonte a Buenos Aires</span></li>
+      <li><span class="block font-display text-lg">Envío en {negocio.demoraEntrega}</span><span class="text-chocolate-700">Entregas {negocio.horarioEntregas}</span></li>
+      <li><span class="block font-display text-lg">Envío gratis</span><span class="text-chocolate-700">En compras desde {formatearPrecio(negocio.envioGratisDesde)} en zona de reparto</span></li>
+    </ul>
+  </section>
+
+  <!-- Categorías -->
+  <section class="contenedor mt-24 grid gap-8 md:grid-cols-2">
+    {bloquesCategorias.map(({ href, imagen, titulo, bajada }) => (
+      <a href={href} class="group relative isolate flex min-h-[26rem] items-end overflow-hidden rounded-[2rem] p-8 text-crema">
+        <Image src={imagen} alt="" widths={[540, 800]} sizes="(min-width: 768px) 50vw, 100vw" class="absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-chocolate/85 via-chocolate/30 to-transparent"></div>
+        <div>
+          <h2 class="text-4xl">{titulo}</h2>
+          <p class="mt-3 max-w-sm text-sm leading-relaxed text-crema/90">{bajada}</p>
+          <span class="mt-5 inline-flex items-center gap-2 text-sm font-medium">
+            Ver {titulo.toLowerCase()} <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
+          </span>
+        </div>
+      </a>
+    ))}
+  </section>
+
+  <!-- Destacados -->
+  <section class="contenedor mt-28">
+    <div class="mb-12 flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="antetitulo">Los más pedidos</p>
+        <h2 class="mt-3 text-4xl md:text-5xl">Favoritos de la casa</h2>
+      </div>
+      <a href="/tienda" class="text-sm font-medium underline underline-offset-4 hover:text-rosa-600">Ver todos los productos</a>
+    </div>
+    <GrillaProductos productos={destacados} />
+  </section>
+
+  <!-- Historia -->
+  <section class="contenedor mt-32 grid items-center gap-12 md:grid-cols-2 lg:gap-20">
+    <Image src={fotoHistoria} alt="Fotografía familiar antigua de la familia Barberina" widths={[480, 720]} sizes="(min-width: 768px) 45vw, 100vw" class="aspect-[4/5] w-full rounded-[2rem] object-cover sepia-[.3]" />
+    <div>
+      <p class="antetitulo">Nuestra historia</p>
+      <h2 class="mt-3 text-4xl md:text-5xl">Del Piamonte a tu mesa</h2>
+      <p class="mt-6 text-lg leading-relaxed text-chocolate-700">
+        Nuestra tatarabuela Barberina llegó a Buenos Aires en 1923 desde el Piamonte, Italia. De ella, su hija y su nieta heredamos el amor por la cocina: ese lugar de la casa que, por su aroma y su espíritu festivo, reunía a todos.
+      </p>
+      <a href="/quienes-somos" class="boton-secundario mt-8">Conocé nuestra historia</a>
+    </div>
+  </section>
+
+  <!-- Encargos -->
+  <section class="contenedor mt-32">
+    <div class="relative isolate overflow-hidden rounded-[2rem] px-8 py-20 text-center text-crema md:py-28">
+      <Image src={fotoMedialunas} alt="" widths={[800, 1280, 1600]} sizes="(min-width: 1152px) 1152px, 100vw" quality={70} class="absolute inset-0 -z-10 h-full w-full object-cover" />
+      <div class="absolute inset-0 -z-10 bg-chocolate/70"></div>
+      <p class="text-xs font-semibold tracking-[0.2em] text-rosa uppercase">Por encargo</p>
+      <h2 class="mx-auto mt-4 max-w-2xl text-4xl md:text-5xl">¿Tenés un festejo? Hacemos la torta.</h2>
+      <p class="mx-auto mt-5 max-w-xl text-crema/85">
+        Tortas personalizadas para cumpleaños, eventos y mesas dulces. Contanos qué imaginás y lo preparamos.
+      </p>
+      <a href={enlaceWhatsApp('¡Hola! Quiero consultar por una torta para un evento.')} target="_blank" rel="noopener" class="boton mt-10 bg-crema text-chocolate hover:bg-white">
+        Consultar por WhatsApp
+      </a>
+    </div>
+  </section>
+</Base>

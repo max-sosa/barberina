@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import Encabezado from '../components/Encabezado.astro';
+import FiltroCategorias from '../components/FiltroCategorias.astro';
+import GrillaProductos from '../components/GrillaProductos.astro';
+import { categorias, obtenerProductos } from '../lib/productos';
+
+const productos = await obtenerProductos('tortas');
+const { titulo, bajada } = categorias.tortas;
+---
+
+<Base titulo={titulo} descripcion={bajada}>
+  <Encabezado antetitulo="Tienda" titulo={titulo} bajada={bajada}>
+    <FiltroCategorias />
+  </Encabezado>
+  <div class="contenedor">
+    <GrillaProductos productos={productos} />
+  </div>
+</Base>

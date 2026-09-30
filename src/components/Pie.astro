@@ -1,0 +1,38 @@
+---
+import Logo from './Logo.astro';
+import { navegacion, negocio } from '../config';
+import { enlaceWhatsApp } from '../lib/whatsapp';
+---
+
+<footer class="mt-24 bg-chocolate text-crema">
+  <div class="contenedor grid gap-12 py-16 md:grid-cols-[1.5fr_1fr_1fr]">
+    <div class="space-y-4">
+      <Logo claro />
+      <p class="max-w-xs text-sm leading-relaxed text-crema/75">{negocio.descripcion}</p>
+    </div>
+
+    <nav aria-label="Pie de página">
+      <p class="mb-4 text-xs font-semibold tracking-[0.2em] text-rosa uppercase">Explorar</p>
+      <ul class="space-y-2 text-sm">
+        {navegacion.map(({ href, label }) => (
+          <li><a href={href} class="text-crema/80 hover:text-crema">{label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div>
+      <p class="mb-4 text-xs font-semibold tracking-[0.2em] text-rosa uppercase">Contacto</p>
+      <ul class="space-y-2 text-sm text-crema/80">
+        <li>{negocio.ubicacion}</li>
+        <li><a href={enlaceWhatsApp()} target="_blank" rel="noopener" class="hover:text-crema">WhatsApp</a></li>
+        <li><a href={negocio.redes.instagram} target="_blank" rel="noopener" class="hover:text-crema">Instagram</a></li>
+        <li><a href={negocio.redes.facebook} target="_blank" rel="noopener" class="hover:text-crema">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-crema/10">
+    <p class="contenedor py-6 text-xs text-crema/60">
+      © {new Date().getFullYear()} {negocio.nombre}. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>

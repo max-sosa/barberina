@@ -1,0 +1,75 @@
+---
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import Cabecera from '../components/Cabecera.astro';
+import Pie from '../components/Pie.astro';
+import PanelCarrito from '../components/carrito/PanelCarrito';
+import { negocio } from '../config';
+import imagenSocial from '../assets/productos/tortas/apple-crumble.jpg';
+import { getImage } from 'astro:assets';
+
+interface Props {
+  titulo?: string;
+  descripcion?: string;
+  imagen?: ImageMetadata;
+}
+
+const { titulo, descripcion = negocio.descripcion, imagen = imagenSocial } = Astro.props;
+const tituloCompleto = titulo ? `${titulo} | ${negocio.nombre}` : `${negocio.nombre} · ${negocio.lema}`;
+const canonica = new URL(Astro.url.pathname, Astro.site);
+const og = await getImage({ src: imagen, width: 1200, format: 'jpg' });
+
+const datosEstructurados = {
+  '@context': 'https://schema.org',
+  '@type': 'Bakery',
+  name: negocio.nombre,
+  description: negocio.descripcion,
+  url: Astro.site?.href,
+  servesCuisine: 'Pastelería y panadería',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: negocio.localidad,
+    addressRegion: 'Buenos Aires',
+    addressCountry: 'AR',
+  },
+  sameAs: Object.values(negocio.redes),
+};
+---
+
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="canonical" href={canonica} />
+    <meta name="theme-color" content="#fbf7f2" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content={negocio.nombre} />
+    <meta property="og:title" content={tituloCompleto} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:url" content={canonica} />
+    <meta property="og:image" content={new URL(og.src, Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(datosEstructurados)} />
+  </head>
+  <body class="flex min-h-dvh flex-col">
+    <a href="#contenido" class="sr-only z-50 rounded-full bg-chocolate px-4 py-2 text-crema focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
+      Saltar al contenido
+    </a>
+    <Cabecera />
+    <main id="contenido" class="flex-1">
+      <slot />
+    </main>
+    <Pie />
+    <PanelCarrito client:idle />
+  </body>
+</html>

@@ -1,0 +1,20 @@
+---
+const opciones = [
+  { href: '/tienda', label: 'Todo' },
+  { href: '/tortas', label: 'Tortas' },
+  { href: '/panificados', label: 'Panificados' },
+];
+const actual = Astro.url.pathname.replace(/\/$/, '');
+---
+
+<nav aria-label="Categorías" class="mt-8 flex justify-center gap-2">
+  {opciones.map(({ href, label }) => (
+    <a
+      href={href}
+      aria-current={actual === href ? 'page' : undefined}
+      class="rounded-full border border-chocolate/20 px-5 py-2 text-sm transition-colors hover:border-chocolate aria-[current=page]:border-chocolate aria-[current=page]:bg-chocolate aria-[current=page]:text-crema"
+    >
+      {label}
+    </a>
+  ))}
+</nav>

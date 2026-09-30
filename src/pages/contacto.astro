@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import Encabezado from '../components/Encabezado.astro';
+import FormularioContacto from '../components/FormularioContacto';
+import { negocio } from '../config';
+import { enlaceWhatsApp } from '../lib/whatsapp';
+
+const canales = [
+  { label: 'WhatsApp', valor: 'Escribinos', href: enlaceWhatsApp() },
+  { label: 'Instagram', valor: '@barberina_', href: negocio.redes.instagram },
+  { label: 'Facebook', valor: 'Barberina Panadería y Pastelería', href: negocio.redes.facebook },
+];
+---
+
+<Base titulo="Contacto" descripcion={`Escribinos por WhatsApp o redes. Estamos en ${negocio.ubicacion}.`}>
+  <Encabezado antetitulo="Contacto" titulo="Hablemos" bajada="¿Una consulta, un encargo especial o un evento? Escribinos y te respondemos a la brevedad." />
+
+  <div class="contenedor grid gap-12 lg:grid-cols-2">
+    <section class="rounded-[2rem] bg-white p-8 shadow-sm ring-1 ring-chocolate/5 md:p-10">
+      <h2 class="mb-6 text-2xl">Envianos un mensaje</h2>
+      <FormularioContacto client:visible />
+    </section>
+
+    <section class="flex flex-col gap-8">
+      <ul class="divide-y divide-chocolate/10 border-y border-chocolate/10">
+        {canales.map(({ label, valor, href }) => (
+          <li>
+            <a href={href} target="_blank" rel="noopener" class="group flex items-center justify-between py-5">
+              <span>
+                <span class="block text-xs font-semibold tracking-[0.2em] text-chocolate-500 uppercase">{label}</span>
+                <span class="font-display text-xl group-hover:text-rosa-600">{valor}</span>
+              </span>
+              <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div>
+        <p class="mb-3 text-sm text-chocolate-700">Nos encontramos en {negocio.ubicacion}.</p>
+        <iframe
+          src={negocio.mapaEmbed}
+          title={`Mapa de ${negocio.localidad}`}
+          class="aspect-[4/3] w-full rounded-3xl border-0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </section>
+  </div>
+</Base>
