@@ -6,7 +6,7 @@ export const negocio = {
     'Pastelería y panadería artesanal en Olivos. Tortas, panificados y recetas de familia desde 1923.',
   // Número de WhatsApp en formato internacional, sin "+", espacios ni guiones.
   // TODO: reemplazar por el número real del negocio.
-  whatsapp: '5491100000000',
+  whatsapp: '5491133930269',
   ubicacion: 'Olivos, Buenos Aires, Argentina',
   localidad: 'Olivos',
   horarioEntregas: 'de 9 a 16 h',
