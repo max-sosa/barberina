@@ -1,0 +1,15 @@
+---
+import { Image } from 'astro:assets';
+import logoNegro from '../assets/marca/logo-negro.png';
+import logoBlanco from '../assets/marca/logo-blanco.png';
+
+interface Props {
+  claro?: boolean;
+}
+const { claro = false } = Astro.props;
+---
+
+<a href="/" class="group flex items-center gap-2.5" aria-label="Barberina, inicio">
+  <Image src={claro ? logoBlanco : logoNegro} alt="" width={40} height={40} class="h-10 w-10 transition-transform duration-500 group-hover:rotate-45" loading="eager" />
+  <span class="font-display text-2xl leading-none tracking-tight">Barberina</span>
+</a>

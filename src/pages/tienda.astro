@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import Encabezado from '../components/Encabezado.astro';
+import FiltroCategorias from '../components/FiltroCategorias.astro';
+import GrillaProductos from '../components/GrillaProductos.astro';
+import { obtenerProductos } from '../lib/productos';
+
+const productos = await obtenerProductos();
+---
+
+<Base titulo="Tienda" descripcion="Tortas y panificados artesanales de Barberina. Armá tu pedido y envialo por WhatsApp.">
+  <Encabezado antetitulo="Tienda" titulo="Hecho a mano, cada día" bajada="Armá tu pedido y envialo por WhatsApp. Te confirmamos disponibilidad y entrega.">
+    <FiltroCategorias />
+  </Encabezado>
+  <div class="contenedor">
+    <GrillaProductos productos={productos} />
+  </div>
+</Base>

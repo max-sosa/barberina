@@ -1,0 +1,15 @@
+---
+interface Props {
+  antetitulo?: string;
+  titulo: string;
+  bajada?: string;
+}
+const { antetitulo, titulo, bajada } = Astro.props;
+---
+
+<section class="contenedor pt-16 pb-12 text-center md:pt-24">
+  {antetitulo && <p class="antetitulo">{antetitulo}</p>}
+  <h1 class="mt-3 text-4xl md:text-6xl">{titulo}</h1>
+  {bajada && <p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-chocolate-700">{bajada}</p>}
+  <slot />
+</section>

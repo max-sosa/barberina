@@ -1,0 +1,73 @@
+---
+import Logo from './Logo.astro';
+import BotonCarrito from './carrito/BotonCarrito';
+import { navegacion } from '../config';
+
+const actual = Astro.url.pathname.replace(/\/$/, '') || '/';
+const activo = (href: string) => actual === href || actual.startsWith(`${href}/`);
+---
+
+<header class="sticky top-0 z-40 border-b border-chocolate/10 bg-crema/90 backdrop-blur-md">
+  <div class="contenedor flex h-18 items-center justify-between gap-6">
+    <Logo />
+
+    <nav aria-label="Principal" class="hidden lg:block">
+      <ul class="flex items-center gap-1">
+        {navegacion.map(({ href, label }) => (
+          <li>
+            <a
+              href={href}
+              aria-current={activo(href) ? 'page' : undefined}
+              class="rounded-full px-4 py-2 text-sm text-chocolate-700 transition-colors hover:text-chocolate aria-[current=page]:bg-crema-200 aria-[current=page]:text-chocolate"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-1">
+      <BotonCarrito client:load />
+      <button
+        type="button"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-full hover:bg-crema-200 lg:hidden"
+        aria-expanded="false"
+        aria-controls="menu-movil"
+        aria-label="Abrir menú"
+        data-menu-boton
+      >
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <nav id="menu-movil" aria-label="Principal" class="hidden border-t border-chocolate/10 lg:hidden" data-menu>
+    <ul class="contenedor flex flex-col py-3">
+      {navegacion.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            aria-current={activo(href) ? 'page' : undefined}
+            class="block rounded-xl px-3 py-3 font-display text-xl aria-[current=page]:bg-crema-200"
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const boton = document.querySelector<HTMLButtonElement>('[data-menu-boton]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+  boton?.addEventListener('click', () => {
+    const abierto = boton.getAttribute('aria-expanded') === 'true';
+    boton.setAttribute('aria-expanded', String(!abierto));
+    boton.setAttribute('aria-label', abierto ? 'Abrir menú' : 'Cerrar menú');
+    menu?.classList.toggle('hidden', abierto);
+  });
+</script>

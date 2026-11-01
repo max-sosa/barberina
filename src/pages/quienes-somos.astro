@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Encabezado from '../components/Encabezado.astro';
+import fotoHistoria from '../assets/historia/antique.jpg';
+import fotoCocina from '../assets/historia/marisa.jpg';
+---
+
+<Base titulo="Quiénes somos" descripcion="Nuestra tatarabuela Barberina llegó a Buenos Aires en 1923 desde el Piamonte. De ella heredamos el amor por la cocina.">
+  <Encabezado antetitulo="Quiénes somos" titulo="Una historia que empezó en la cocina" />
+
+  <div class="contenedor space-y-24">
+    <section class="grid items-center gap-12 md:grid-cols-2 lg:gap-20">
+      <Image src={fotoHistoria} alt="Fotografía familiar antigua: la abuela con un bebé en brazos junto a una niña" widths={[480, 720]} sizes="(min-width: 768px) 45vw, 100vw" loading="eager" class="aspect-[4/5] w-full rounded-[2rem] object-cover sepia-[.3]" />
+      <div class="space-y-5 text-lg leading-relaxed text-chocolate-700">
+        <p class="font-display text-2xl leading-snug text-chocolate">
+          Nuestra tatarabuela Barberina llegó a Buenos Aires en 1923 desde el Piamonte, Italia.
+        </p>
+        <p>
+          Fue de ella, su hija y su nieta de quienes heredamos el amor por la gastronomía. El lugar más valorado de la casa era la cocina: por su aroma y su espíritu festivo, atraía a colaboradores y comensales.
+        </p>
+        <p>
+          Sin mucha formación, pero sabia, supo elegir materia prima de calidad, saludable y nutritiva para agasajar a sus seres queridos.
+        </p>
+      </div>
+    </section>
+
+    <section class="grid items-center gap-12 md:grid-cols-2 lg:gap-20">
+      <div class="space-y-5 text-lg leading-relaxed text-chocolate-700 md:order-first">
+        <p class="font-display text-2xl leading-snug text-chocolate">
+          Con el tiempo, sus tataranietos —hoy cocineros y pasteleros— junto a su bisnieta formaron esta empresa.
+        </p>
+        <p>
+          Hacemos productos de calidad, con idoneidad profesional, sin perder el espíritu de la cocina de antaño.
+        </p>
+        <p>
+          Barberina les propone productos para disfrutar y hornear en casa, y hacer de sus cocinas ese espacio gozoso, amoroso y convocante.
+        </p>
+        <a href="/tienda" class="boton-primario mt-4">Conocé nuestros productos</a>
+      </div>
+      <Image src={fotoCocina} alt="Pastelera de Barberina amasando, con harina en el aire" widths={[480, 720]} sizes="(min-width: 768px) 45vw, 100vw" class="aspect-[4/5] w-full rounded-t-full rounded-b-[2rem] object-cover md:order-last" />
+    </section>
+  </div>
+</Base>

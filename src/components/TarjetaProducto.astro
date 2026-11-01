@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image, getImage } from 'astro:assets';
+import AgregarAlCarrito from './carrito/AgregarAlCarrito';
+import { formatearPrecio } from '../lib/formato';
+
+interface Props {
+  producto: CollectionEntry<'productos'>;
+}
+
+const { producto } = Astro.props;
+const { nombre, precio, unidad, imagen, porciones } = producto.data;
+const miniatura = await getImage({ src: imagen, width: 160, height: 160, fit: 'cover' });
+const url = `/producto/${producto.id}`;
+---
+
+<article class="group flex flex-col">
+  <a href={url} class="block overflow-hidden rounded-3xl bg-crema-200">
+    <Image
+      src={imagen}
+      alt={nombre}
+      widths={[360, 540, 720]}
+      sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+      class="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+    />
+  </a>
+  <div class="flex flex-1 flex-col pt-4">
+    <div class="flex items-start justify-between gap-4">
+      <h3 class="text-xl leading-snug">
+        <a href={url} class="hover:text-rosa-600">{nombre}</a>
+      </h3>
+      <p class="shrink-0 pt-0.5 font-medium tabular-nums">{formatearPrecio(precio)}</p>
+    </div>
+    <p class="mt-1 text-sm text-chocolate-500">{porciones ?? unidad}</p>
+    <AgregarAlCarrito
+      client:idle
+      class="mt-4"
+      id={producto.id}
+      nombre={nombre}
+      precio={precio}
+      unidad={unidad}
+      imagen={miniatura.src}
+    />
+  </div>
+</article>

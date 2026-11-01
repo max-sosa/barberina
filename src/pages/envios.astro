@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Encabezado from '../components/Encabezado.astro';
+import { negocio } from '../config';
+import { formatearPrecio } from '../lib/formato';
+import { enlaceWhatsApp } from '../lib/whatsapp';
+import zona1 from '../assets/envios/zona-1.jpg';
+import zona2 from '../assets/envios/zona-2.jpg';
+---
+
+<Base titulo="Envíos" descripcion={`Envíos a domicilio en zona norte y CABA en ${negocio.demoraEntrega}. Envío gratis desde ${formatearPrecio(negocio.envioGratisDesde)}.`}>
+  <Encabezado antetitulo="Envíos" titulo="Así te llega tu pedido" bajada={`Desde que confirmamos tu compra, el envío tarda entre ${negocio.demoraEntrega}.`} />
+
+  <div class="contenedor grid gap-8 md:grid-cols-2">
+    <section class="rounded-[2rem] bg-white p-8 shadow-sm ring-1 ring-chocolate/5 md:p-10">
+      <p class="antetitulo">Opción 1</p>
+      <h2 class="mt-3 text-3xl">Envío a domicilio</h2>
+      <p class="mt-2 text-sm font-medium text-rosa-600">Solo dentro de la zona marcada en el mapa.</p>
+      <ul class="mt-6 space-y-3 leading-relaxed text-chocolate-700">
+        <li>El costo depende de la zona.</li>
+        <li>Entregas {negocio.horarioEntregas}; el horario exacto depende del recorrido del repartidor.</li>
+        <li>¿Lo necesitás un día específico? Indicalo en las notas al hacer el pedido.</li>
+      </ul>
+      <p class="mt-6 rounded-2xl bg-rosa-100 px-5 py-4 text-sm">
+        <strong>Envío gratis</strong> en pedidos desde {formatearPrecio(negocio.envioGratisDesde)} (no aplica a Cabify Envíos / Uber Flash).
+      </p>
+    </section>
+
+    <section class="rounded-[2rem] bg-white p-8 shadow-sm ring-1 ring-chocolate/5 md:p-10">
+      <p class="antetitulo">Opción 2</p>
+      <h2 class="mt-3 text-3xl">Cabify Envíos o Uber Flash</h2>
+      <p class="mt-2 text-sm font-medium text-rosa-600">Para fuera de la zona o para un horario específico.</p>
+      <ul class="mt-6 space-y-3 leading-relaxed text-chocolate-700">
+        <li>Coordinamos previamente la fecha y el horario de entrega.</li>
+        <li>Cuando la app te asigne conductor, envianos por WhatsApp la patente y el modelo del auto.</li>
+        <li>El costo del viaje lo abonás vos a través de la app.</li>
+      </ul>
+      <a href={enlaceWhatsApp('¡Hola! Quiero coordinar un envío por Cabify / Uber Flash.')} target="_blank" rel="noopener" class="boton-secundario mt-6">
+        Coordinar por WhatsApp
+      </a>
+    </section>
+  </div>
+
+  <section class="contenedor mt-20">
+    <h2 class="text-center text-3xl">Zona de reparto</h2>
+    <p class="mt-3 text-center text-chocolate-700">Zona norte (Vicente López, Olivos, La Lucila, Martínez, Florida y Acassuso) y CABA (Núñez, Belgrano y parte de Palermo).</p>
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      <Image src={zona1} alt="Mapa de la zona de reparto en zona norte: Vicente López, Olivos, La Lucila, Martínez y Acassuso" widths={[480, 800]} sizes="(min-width: 768px) 50vw, 100vw" class="w-full rounded-3xl" />
+      <Image src={zona2} alt="Mapa de la zona de reparto en CABA: Núñez, Belgrano y parte de Palermo" widths={[480, 800]} sizes="(min-width: 768px) 50vw, 100vw" class="w-full rounded-3xl" />
+    </div>
+  </section>
+</Base>

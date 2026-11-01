@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+  /* Paleta Barberina */
+  --color-crema: #fbf7f2;
+  --color-crema-100: #f6efe6;
+  --color-crema-200: #efe3d4;
+  --color-chocolate: #3b2a20;
+  --color-chocolate-700: #5a4234;
+  --color-chocolate-500: #7a6252;
+  --color-rosa: #e8c4bf;
+  --color-rosa-100: #f7e6e3;
+  --color-rosa-600: #9a524c;
+  --color-dorado: #b8925a;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-crema text-chocolate font-sans;
+  }
+  h1, h2, h3 {
+    @apply font-display text-balance;
+    font-optical-sizing: auto;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-rosa-600;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+}
+
+/* Clases propias reutilizables */
+@utility contenedor {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+@utility boton {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-wide transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+}
+@utility boton-primario {
+  @apply boton bg-chocolate text-crema hover:bg-chocolate-700;
+}
+@utility boton-secundario {
+  @apply boton border border-chocolate/25 text-chocolate hover:border-chocolate hover:bg-crema-100;
+}
+@utility antetitulo {
+  @apply text-xs font-semibold tracking-[0.2em] text-rosa-600 uppercase;
+}
+@utility campo {
+  @apply w-full rounded-xl border border-chocolate/20 bg-white px-4 py-3 text-sm text-chocolate placeholder:text-chocolate-500/70 focus:border-chocolate focus:outline-none;
+}
+@utility etiqueta {
+  @apply mb-1.5 block text-sm font-medium;
+}

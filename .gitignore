@@ -1,0 +1,12 @@
+# dependencias y build
+node_modules/
+dist/
+.astro/
+
+# entorno
+.env
+.env.*
+
+# sistema
+.DS_Store
+npm-debug.log*
